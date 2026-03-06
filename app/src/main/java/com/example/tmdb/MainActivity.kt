@@ -14,14 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tmdb.ui.FavoritesScreen
 import com.example.tmdb.ui.theme.TMDBTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     setContent {
       TMDBTheme {
-        val favoritesViewModel: FavoritesViewModel by viewModels { FavoritesViewModel.Factory }
+        val favoritesViewModel: FavoritesViewModel by viewModels()
 
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
           FavoritesScreen(

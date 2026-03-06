@@ -1,23 +1,13 @@
 package com.example.tmdb
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.tmdb.domain.Repo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoritesViewModel(
+@HiltViewModel
+class FavoritesViewModel @Inject constructor(
   private val repo: Repo
 ) : ViewModel() {
-
   fun getName() = repo.name()
-
-  companion object {
-    val Factory: ViewModelProvider.Factory = viewModelFactory {
-      initializer {
-        val repo = (this[APPLICATION_KEY] as TmdbApplication).repo
-        FavoritesViewModel(repo)
-      }
-    }
-  }
 }

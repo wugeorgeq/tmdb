@@ -1,7 +1,8 @@
 package com.example.tmdb
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class TmdbApplication: Application() {
-  val repo = RealRepo()
+@HiltAndroidApp
+class TmdbApplication : Application() {
 }
