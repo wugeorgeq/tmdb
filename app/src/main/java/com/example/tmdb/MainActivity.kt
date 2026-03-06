@@ -12,7 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.tmdb.ui.FavoritesScreen
+import com.example.tmdb.assets.WatchListScreen
+import com.example.tmdb.assets.WatchlistViewModel
 import com.example.tmdb.ui.theme.TMDBTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,15 +23,22 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     val favoritesViewModel: FavoritesViewModel by viewModels()
+    val watchListViewModel: WatchlistViewModel by viewModels()
     setContent {
       TMDBTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          FavoritesScreen(
-            viewModel = favoritesViewModel,
+          WatchListScreen(
+            watchListViewModel,
             modifier = Modifier
               .padding(innerPadding)
               .fillMaxSize()
           )
+//          FavoritesScreen(
+//            viewModel = favoritesViewModel,
+//            modifier = Modifier
+//              .padding(innerPadding)
+//              .fillMaxSize()
+//          )
         }
       }
     }
