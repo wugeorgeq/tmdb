@@ -21,13 +21,12 @@ class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
+    val favoritesViewModel: FavoritesViewModel by viewModels()
     setContent {
       TMDBTheme {
-        val favoritesViewModel: FavoritesViewModel by viewModels()
-
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
           FavoritesScreen(
-            name = favoritesViewModel.getName(),
+            viewModel = favoritesViewModel,
             modifier = Modifier
               .padding(innerPadding)
               .fillMaxSize()
